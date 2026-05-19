@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+<?php
+class sinhvien {
+    public function index() {
+        // trả về view
+        require_once '../app/views/sinhvien/index.php';
+    }
+    public function create() {
+        // trả về view
+        require_once '../app/views/sinhvien/create.php';
+    }
+}
+?>
