@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            width: 100%;
+            height: 80px;
+        }
+        .content {
+            min-height: 100vh;
+            width: 60%;
+            margin: 0 auto;
+        }
+        .footer {
+            width: 100%;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <?php require_once "partial/header.php"; ?>
+    </div>
+    <div class="content"><?php if (!empty($view)): require_once '../app/views/' . $view . '.php';
+                            endif; ?></div>
+    <?php require_once "partial/footer.php"; ?>
+</body>
+
+</html>
