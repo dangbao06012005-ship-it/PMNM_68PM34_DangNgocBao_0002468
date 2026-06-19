@@ -6,13 +6,13 @@
             $this->conn = $db->connect();
         }
         public function getALLSinhVien() {
-            $query = "SELECT * FROM tbl_sinhvien";
+            $query = "SELECT * FROM sinhviens";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         public function create($hoten, $gioitinh, $mssv) {
-            $query = "INSERT INTO tbl_sinhvien (sinhvien, giotinh, mssv) VALUES (:hoten, :gioitinh, :mssv)";
+            $query = "INSERT INTO sinhviens (hoten, giotinh, mssv) VALUES (:hoten, :gioitinh, :mssv)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':hoten', $hoten);
             $stmt->bindParam(':gioitinh', $gioitinh);
@@ -26,14 +26,14 @@
 
         public function paging($limit, $offset, $search = '') {
             // đếm tổng số bản ghi
-            $sqlCount = "SELECT COUNT(*) as total FROM tbl_sinhvien";
+            $sqlCount = "SELECT COUNT(*) as total FROM sinhviens";
             $stmtCount = $this->conn->prepare($sqlCount);
             $stmtCount->execute();
             $totalRecord = $stmtCount->fetchColumn();
             $totalRecord = ceil($totalRecord / $limit);
 
 
-            $sql = "SELECT * FROM tbl_sinhvien LIMIT :limit OFFSET :offset";
+            $sql = "SELECT * FROM sinhviens LIMIT :limit OFFSET :offset";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
@@ -47,7 +47,7 @@
         }
 
         public function getById($id) {
-            $query = "SELECT * FROM tbl_sinhvien WHERE id = :id";
+            $query = "SELECT * FROM sinhviens WHERE id = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
@@ -55,7 +55,7 @@
         }
 
         public function update($id, $hoten, $gioitinh, $mssv) {
-            $query = "UPDATE tbl_sinhvien SET sinhvien = :hoten, giotinh = :gioitinh, mssv = :mssv WHERE id = :id";
+            $query = "UPDATE sinhviens SET hoten = :hoten, giotinh = :gioitinh, mssv = :mssv WHERE id = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':hoten', $hoten);
@@ -64,7 +64,7 @@
             return $stmt->execute();
         }
         public function delete($id) {
-            $query = "DELETE FROM tbl_sinhvien WHERE id = :id";
+            $query = "DELETE FROM sinhviens WHERE id = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id);
             return $stmt->execute();

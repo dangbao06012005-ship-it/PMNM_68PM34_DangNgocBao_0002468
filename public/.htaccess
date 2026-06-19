@@ -1,6 +1,7 @@
-RewirteEngine On
-RewirteCond %{REQUEST_FILENAME} | -f
-RewirteCond %{REQUEST_FILENAME} | -d
+RewriteEngine On
 
-RewirteRule ^(.*)$
-
+Options -Indexes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+RewriteRule ^(.*)$ index.php?url=$1

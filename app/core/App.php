@@ -7,11 +7,8 @@ class App
 
     public function __construct()
     {
-        // if (isset($_GET['url'])) {
-        //     echo($_GET['url']);
-        // }
-        $urlProcessed = $this->UrlProcess();  //mảng url đã được xử lý
-        //var_dump($urlProcessed);
+       
+        $urlProcessed = $this->UrlProcess(); 
         if (isset($urlProcessed[0])) {
             if (file_exists('../app/controllers/' . $urlProcessed[0] . '.php')) {
                 $this->controller = $urlProcessed[0];
